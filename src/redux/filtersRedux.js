@@ -11,10 +11,15 @@ const createActionName = name => `app/${reducerName}/${name}`;
 // action types
 export const CHANGE_PHRASE = createActionName('CHANGE_PHRASE');
 // TODO - add other action types
-
+export const TAG_TICK = createActionName('TAG_TICK');
+export const TAG_UNTICK = createActionName('TAG_UNTICK');
+export const CHANGE_DURATION = createActionName('CHANGE_DURATION');
 // action creators
 export const changeSearchPhrase = payload => ({ payload, type: CHANGE_PHRASE });
 // TODO - add other action creators
+export const tagTick = payload => ({ payload, type: TAG_TICK });
+export const tagUntick = payload => ({ payload, type: TAG_UNTICK });
+export const changeDuration = payload => ({ payload, type: CHANGE_DURATION });
 
 // reducer
 export default function reducer(statePart = [], action = {}) {
@@ -25,6 +30,22 @@ export default function reducer(statePart = [], action = {}) {
         searchPhrase: action.payload,
       };
     // TODO - handle other action types
+    case TAG_TICK:
+      return {
+        ...statePart,
+        searchPhrase: action.payload,
+      };
+    case TAG_UNTICK:
+      return {
+        ...statePart,
+        searchPhrase: action.payload,
+      };
+    case CHANGE_DURATION:
+      return {
+        ...statePart,
+        searchPhrase: action.payload,
+      };
+
     default:
       return statePart;
   }
