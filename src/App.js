@@ -2,9 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {BrowserRouter, Route} from 'react-router-dom';
 import PropTypes from 'prop-types';
-
 import MainLayout from './components/layout/MainLayout/MainLayout';
-
 import Home from './components/views/Home/Home';
 import Trips from './components/views/Trips/TripsContainer';
 import Countries from './components/views/Countries/CountriesContainer';
@@ -15,7 +13,7 @@ import Trip from './components/views/Trip/TripContainer';
 import Info from './components/views/Info/Info';
 import NotFound from './components/views/NotFound/NotFound';
 import {AnimatedSwitch} from 'react-router-transition';
-
+import styles from './App.scss';
 import parseTrips from './utils/parseTrips';
 import {setMultipleStates} from './redux/globalRedux';
 
@@ -43,10 +41,10 @@ class App extends React.Component {
       <BrowserRouter>
         <MainLayout>
           <AnimatedSwitch
-            atEnter={{ opacity: 1 }}
+            atEnter={{ opacity: 0 }}
             atLeave={{ opacity: 0 }}
             atActive={{ opacity: 1 }}
-            className="switch-wrapper"
+            className={styles.switchWrapper}
             location={location}
           >
             <Route exact path='/' component={Home} />
