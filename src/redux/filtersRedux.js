@@ -33,19 +33,21 @@ export default function reducer(statePart = [], action = {}) {
     case TAG_TICK:
       return {
         ...statePart,
-        searchPhrase: action.payload,
+        ///???
       };
     case TAG_UNTICK:
       return {
         ...statePart,
-        searchPhrase: action.payload,
+        ///???
       };
     case CHANGE_DURATION:
       return {
         ...statePart,
-        searchPhrase: action.payload,
+        duration: {
+          ...statePart.duration,
+          ///???
+        },
       };
-
     default:
       return statePart;
   }
