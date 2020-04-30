@@ -33,22 +33,48 @@ export default function reducer(statePart = [], action = {}) {
     case TAG_TICK:
       return {
         ...statePart,
-        ///???
+        tags: [...statePart.tags, action.payload],
       };
     case TAG_UNTICK:
       return {
         ...statePart,
-        ///???
+        tags: statePart.tags.filter(tag => tag !== action.payload),
       };
     case CHANGE_DURATION:
       return {
         ...statePart,
         duration: {
           ...statePart.duration,
-          ///???
-        },
+          [action.payload.type]: action.payload.value },
       };
+
+
     default:
       return statePart;
   }
 }
+
+/* duration: {
+  ...statePart.duration.from,
+  from: action.payload.value,
+  ...statePart.duration.to,
+  to: action.payload.value,
+
+  duration: {
+    to:{...statePart.value, to:action.payload},
+    from:{...statePart.value, from:action.payload},
+  },
+
+  duration: {
+    ...statePart.duration,
+    from: action.payload.value,
+    ...statePart.duration,
+    to: action.payload.value,
+  },
+
+  duration: {
+    to:{...statePart.value, to:action.payload},
+    from:{...statePart.value, from:action.payload},
+  },
+
+}, */

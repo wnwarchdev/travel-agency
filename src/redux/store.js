@@ -13,10 +13,10 @@ const initialState = {
   tags: {},
   filters: {
     searchPhrase: '',
-    tags: [],
+    tags: ['beach'],
     duration: {
       from: 1,
-      to: 14,
+      to: 7,
     },
   },
 };
