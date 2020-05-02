@@ -13,16 +13,17 @@ class OrderForm extends React.Component {
   static propTypes = {
     cost: PropTypes.node,
     options: PropTypes.any,
+    setOrderOption: PropTypes.any,
   }
 
   render() {
-    const {cost, options} = this.props;
+    const {cost, options, setOrderOption} = this.props;
     return (
       <Grid>
         <Row>
           {pricing.map((object) => (
             <Col md={4} key={object.id}>
-              <OrderOption {...object}/>
+              <OrderOption {...object} currentValue={options[object.id]} setOrderOption={setOrderOption}/>
             </Col>
           ))}
           <Col xs={12}>
