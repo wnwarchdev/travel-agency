@@ -5,7 +5,7 @@ import styles from './OrderOption.scss';
 
 const OrderOptions = () => (
   <div className={styles.component}>
-    <h3 className={styles.title}>Car Rental</h3>
+    <h3 className={styles.title}>CarRental</h3>
   </div>
 );
 
