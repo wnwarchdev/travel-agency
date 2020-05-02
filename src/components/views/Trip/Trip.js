@@ -67,7 +67,7 @@ const Trip = ({error, name, image, cost, days, description, country, intro}) => 
           </Row>
         </Grid>
       </DetailsBox>
-      <OrderForm/>
+      <OrderForm cost={cost}/>
     </Section>
   );
 };

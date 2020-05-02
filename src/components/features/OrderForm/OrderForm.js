@@ -10,16 +10,17 @@ class OrderForm extends React.Component {
 
   static propTypes = {
     cost: PropTypes.node,
+    options: PropTypes.any,
   }
 
   render() {
-    const {cost} = this.props;
+    const {cost, options} = this.props;
     return (
       <Grid>
         <Row>
           <Col xs={12}>
             <PageTitle text='Trip options' />
-            <OrderSummary tripCost={cost} />
+            <OrderSummary cost={cost} options={options} />
           </Col>
         </Row>
       </Grid>
