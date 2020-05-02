@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-const OrderOptionsNumbers = () => (
+const OrderOptionsNumber = () => (
   <div>
     <h4>NUMBERS</h4>
   </div>
 );
 
 
-export default OrderOptionsNumbers;
+export default OrderOptionsNumber;
