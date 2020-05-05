@@ -20,7 +20,7 @@ describe('Component TripSummary', () => {
 
     const component = shallow(<TripSummary id={'placeholder'} image={testSrc} name={testAlt} cost={'placeholder'} days={1} tags={['placeholder']}/>);
 
-    expect(component.find('img').prop('src')).toEqual(testSrc);
+    expect(component.find('img').prop('src')).toEqual(testSrc); //bardziej szczegółowo
     expect(component.find('img').prop('alt')).toEqual(testAlt);
   });//end
 
