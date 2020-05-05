@@ -39,7 +39,7 @@ describe('Component OrderOption', () => {
 const optionTypes = {
   dropdown: 'OrderOptionDropdown',
   icons: 'OrderOptionIcons',
-  checkboxes: 'OrderOptionCheckboxes',
+  checkboxes: 'OrderOptionsCheckboxes',
   number: 'OrderOptionNumber',
   text: 'OrderOptionTextarea',
   date: 'OrderOptionDate',
