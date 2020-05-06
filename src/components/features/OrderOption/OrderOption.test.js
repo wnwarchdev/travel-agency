@@ -130,8 +130,10 @@ for(let type in optionTypes){
       case 'icons': {
         /* tests for icons */
 
-        it('should render', () => { //icons 01
-
+        it('should run on click', () => { //icons 01
+          renderedSubcomponent.find('.icon').last().simulate('click');
+          expect(mockSetOrderOption).toBeCalledTimes(1);
+          expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
         });
         break;
       }
@@ -139,8 +141,10 @@ for(let type in optionTypes){
       case 'checkboxes': {
         /* tests for checkboxes */
 
-        it('should render', () => { //checkboxes 01
-
+        it('should run on click', () => { //checkboxes 01
+          renderedSubcomponent.find(`input`).at(1).simulate('change', { currentTarget: { checked: true } });
+          expect(mockSetOrderOption).toBeCalledTimes(1);
+          expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: [mockProps.currentValue, testValue] });
         });
         break;
       }
