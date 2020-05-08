@@ -13,33 +13,44 @@ import Button from '../../common/Button/Button';
 import settings from '../../../data/settings';
 
 
-const sendOrder = (options, tripCost) => {
-  const totalCost = formatPrice(calculateTotal(tripCost, options));
+const sendOrder = (options, cost, duration, participant,) => {
+  const totalCost = formatPrice(calculateTotal(cost, options));
 
-  const payload = {
-    ...options,
-    totalCost,
-  };
 
-  const url = settings.db.url + '/' + settings.db.endpoint.orders;
 
-  const fetchOptions = {
-    cache: 'no-cache',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-  };
+  if (options.name !== '' && options.name !=='What is your name?' && options.contact !== '' && options.contact !=='phone, email, etc.' && options['start-date'] !== ''){
 
-  fetch(url, fetchOptions)
-    .then(function(response){
-      return response.json();
-    }).then(function(parsedResponse){
-      console.log('parsedResponse', parsedResponse);
-    });
+    const payload = {
+      ...options,
+      totalCost,
+      duration,
+      participant,
+    };
+
+    const url = settings.db.url + '/' + settings.db.endpoint.orders;
+
+    const fetchOptions = {
+      cache: 'no-cache',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    };
+
+    fetch(url, fetchOptions)
+      .then(function(response){
+        return response.json();
+      }).then(function(parsedResponse){
+        console.log('parsedResponse', parsedResponse);
+      });
+  }
+
+
+  else {alert('please add name, contact and departure details');}
+
+
 };
-
 
 class OrderForm extends React.Component {
 
@@ -47,10 +58,12 @@ class OrderForm extends React.Component {
     cost: PropTypes.node,
     options: PropTypes.any,
     setOrderOption: PropTypes.any,
+    duration: PropTypes.any,
+    participant: PropTypes.any,
   }
 
   render() {
-    const {cost, options, setOrderOption} = this.props;
+    const {cost, options, duration, participant, setOrderOption} = this.props;
     return (
       <Grid>
         <Row>
@@ -63,7 +76,7 @@ class OrderForm extends React.Component {
             <PageTitle text='Trip options' />
             <OrderSummary cost={cost} options={options} />
           </Col>
-          <Button onClick={() => sendOrder(options, cost)}>Order now!</Button>
+          <Button onClick={() => sendOrder(options, cost, duration, participant)}>Order now!</Button>
         </Row>
       </Grid>
     );

@@ -12,6 +12,7 @@ const OrderOptionNumber = ({currentValue, price, setOptionValue, limits}) => (
       onChange={event => setOptionValue(event.currentTarget.value)}
       min={limits.min}
       max={limits.max}
+      required
     >
     </input>
     x{formatPrice(price)}
