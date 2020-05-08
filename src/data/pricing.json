@@ -56,7 +56,7 @@
   },
   {
     "id": "name",
-    "participant": "Your name",
+    "name": "Your name",
     "defaultValue": "What is your name?",
     "type": "text"
   },
