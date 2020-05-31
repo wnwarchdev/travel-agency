@@ -1,8 +1,9 @@
 .component {
   text-align: center;
-  color: #ffffff;
-  border: 1px solid #ffffff;
+  color: #fff;
+  border: 1px solid #fff;
   padding: 10px;
+  z-index: 999;
 }
 
 
@@ -13,4 +14,6 @@
 
 
 .promoDescription {
+  color: yellow;
+  font-weight: 700;
 }

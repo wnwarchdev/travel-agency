@@ -8,8 +8,8 @@ const select = {
 };
 
 const mockProps = {
-  titleText: 'Happy Hour',
-  promoText: 'Get the offer at: ',
+  titleText: 'Happy Hour in:',
+  promoText: 'The time is now!',
 };
 
 describe('Component HappyHourAd', () => {
@@ -30,7 +30,7 @@ describe('Component HappyHourAd', () => {
     const renderTitle = component.find(select.title).text();
     const promoTitle = component.find(select.promoDescription).text();
     expect(renderTitle).toEqual(mockProps.titleText);
-    expect(promoTitle).toContain(mockProps.promoText);
+    expect(promoTitle).toBeTruthy();
   });
 
 
@@ -97,4 +97,15 @@ describe('Component HappyHourAd with mocked Date and delay', () => {
   checkDescriptionAfterTime('11:57:58', 2,'122');
   checkDescriptionAfterTime('11:59:59', 1, '1');
   checkDescriptionAfterTime('13:00:00', 60 * 60, 23 * 60 * 60 + '');
+});
+
+describe('Component HappyHourAd with mocked Date and description', () => {
+  checkDescriptionAtTime('12:00:00', mockProps.promoText);
+  checkDescriptionAtTime('12:30:15', mockProps.promoText);
+  checkDescriptionAtTime('12:59:59', mockProps.promoText);
+});
+
+describe('Component HappyHourAd with mocked Date at time of promotion', () => {
+  checkDescriptionAfterTime('11:57:58', 2,'122');
+  checkDescriptionAfterTime('12:00:00', 1, mockProps.promoText);
 });
