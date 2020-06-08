@@ -71,14 +71,14 @@ describe('Component DaysToSummer', () => {
   it('should render counter at end of summer', () => {
     global.Date = mockDate(mockDateSummerEnd);
     const component = shallow(<DaysToSummer />);
-    expect(component.find(select.counter).text()).toEqual('269 days to summer of \'21');
+    expect(component.find(select.counter).text()).toEqual('270 days to summer of \'21');
     global.Date = trueDate;
   });
 
   it('should render counter in winter', () => {
     global.Date = mockDate(mockDateWinter);
     const component = shallow(<DaysToSummer />);
-    expect(component.find(select.counter).text()).toEqual('170 days to summer of \'21');
+    expect(component.find(select.counter).text()).toEqual('171 days to summer of \'21');
     global.Date = trueDate;
   });
 
@@ -92,7 +92,7 @@ describe('Component DaysToSummer', () => {
   it('should render counter in winter next year', () => {
     global.Date = mockDate(mockDateNextWinter);
     const component = shallow(<DaysToSummer />);
-    expect(component.find(select.counter).text()).toEqual('170 days to summer of \'22');
+    expect(component.find(select.counter).text()).toEqual('171 days to summer of \'22');
     global.Date = trueDate;
   });
 
