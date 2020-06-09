@@ -13,14 +13,17 @@ class DaysToSummer extends React.Component {
 
     const currentMonth = currentDate.getUTCMonth();
     const currentDay = currentDate.getUTCDate();
+    //console.log('CD: ',currentDay, currentDate.getDate());
     let message = '';
-    const startDate = new Date(currentDate.getFullYear(), 5, 20);
+    const startDate = new Date(Date.UTC(currentDate.getUTCFullYear(), 5, 20, 12, 0, 0, 0));
     const oneDay = 1000*60*60*24;
-    //console.log('startDate: ' , startDate);
+    console.log('startDate: ' , startDate);
     //console.log('calc is: ', -(Math.floor((currentDate - startDate)/oneDay)));
     const daysToSummer = -(Math.floor((currentDate - startDate)/oneDay));
     //console.log('current month is: ', currentMonth + 1);
     //console.log('current day is: ', currentDay);
+    //console.log('DTS: ', daysToSummer);
+
 
     if ( ((currentMonth == 5) && (currentDay >= 20))||(currentMonth == 6) || (currentMonth == 7) || ((currentMonth == 8) && (currentDay <= 22)) )  {
       message = 'summer is now';}
@@ -31,10 +34,12 @@ class DaysToSummer extends React.Component {
     else if ( ((currentMonth == 8) && (currentDay > 22)) || (currentMonth >= 9) ){
       const nextYear = currentDate.getFullYear()+1;
       //console.log('next year is: ', nextYear);
-      const startDate = new Date(nextYear, 5, 20);
+      const startDate = new Date(Date.UTC(nextYear, 5, 20));
+      //console.log('SD: ', startDate);
+      //console.log('CD: ', currentDate);
       const daysToSummer = (Math.floor((startDate - currentDate)/oneDay));
       const nextYearShort = nextYear - 2000;
-
+      //console.log('DTS2: ', daysToSummer);
       message = daysToSummer + ' days to summer of \'' + nextYearShort;
       //console.log('next date: ', startDate );
     }

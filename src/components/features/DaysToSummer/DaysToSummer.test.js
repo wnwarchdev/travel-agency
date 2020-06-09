@@ -19,9 +19,11 @@ const mockDate = customDate => class extends Date {
     return this;
   }
   static now(){
-    return (new Date(customDate)).getTime();
+    return new Date(Date.UTC(customDate)).getTime();
   }
 };
+
+
 
 
 const mockDateSummerStart = '2020-06-18';
@@ -50,7 +52,7 @@ describe('Component DaysToSummer', () => {
   it('should render counter in spring', () => {
     global.Date = mockDate(mockDateSpring);
     const component = shallow(<DaysToSummer />);
-    expect(component.find(select.counter).text()).toEqual('14 days to summer');
+    expect(component.find(select.counter).text()).toEqual('15 days to summer');
     global.Date = trueDate;
   });
 
@@ -67,6 +69,8 @@ describe('Component DaysToSummer', () => {
     expect(component.find(select.counter).text()).toEqual('summer is now');
     global.Date = trueDate;
   });
+
+
 
   it('should render counter at end of summer', () => {
     global.Date = mockDate(mockDateSummerEnd);
@@ -85,7 +89,7 @@ describe('Component DaysToSummer', () => {
   it('should render counter in spring next year', () => {
     global.Date = mockDate(mockDateNextSpring);
     const component = shallow(<DaysToSummer />);
-    expect(component.find(select.counter).text()).toEqual('14 days to summer');
+    expect(component.find(select.counter).text()).toEqual('15 days to summer');
     global.Date = trueDate;
   });
 
@@ -99,7 +103,7 @@ describe('Component DaysToSummer', () => {
   it('should render counter in spring another year', () => {
     global.Date = mockDate(mockDateAnotherSpring);
     const component = shallow(<DaysToSummer />);
-    expect(component.find(select.counter).text()).toEqual('14 days to summer');
+    expect(component.find(select.counter).text()).toEqual('15 days to summer');
     global.Date = trueDate;
   });
 
